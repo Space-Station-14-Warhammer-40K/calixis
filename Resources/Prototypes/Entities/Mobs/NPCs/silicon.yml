@@ -360,37 +360,6 @@
   - type: DoAfter
 
 - type: entity
-  parent:
-  - MobSiliconBase
-  - StripableInventoryBase
-  id: MobMimeBot
-  name: mimebot
-  description: Why not give the mimebot a friendly wave?
-  components:
-  - type: Sprite
-    sprite: Mobs/Silicon/Bots/mimebot.rsi
-    state: mimebot
-  - type: MimePowers
-  - type: Construction
-    graph: MimeBot
-    node: bot
-  - type: GhostRole
-    makeSentient: true
-    name: ghost-role-information-mimebot-name
-    description: ghost-role-information-mimebot-description
-    rules: ghost-role-information-freeagent-rules
-    mindRoles:
-    - MindRoleGhostRoleFreeAgentHarmless
-    raffle:
-      settings: default
-  - type: GhostTakeoverAvailable
-  - type: InteractionPopup
-    interactSuccessString: petting-success-mimebot
-    interactFailureString: petting-failure-mimebot
-  - type: Inventory
-    templateId: head
-
-- type: entity
   parent: MobSiliconBase
   id: MobSupplyBot
   name: supplybot

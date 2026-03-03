@@ -322,16 +322,6 @@
   - type: StaticPrice
     price: 5000
 
-# The job-ready version of an AI spawn.
-- type: entity
-  id: PlayerStationAi
-  parent: PlayerStationAiEmpty
-  suffix: Job spawn
-  components:
-  - type: ContainerSpawnPoint
-    containerId: station_ai_mind_slot
-    job: StationAi
-
 # The station AI core assembly
 - type: entity
   parent: BaseStructure
@@ -402,69 +392,6 @@
     containers:
       board: !type:Container
       station_ai_brain_slot: !type:Container
-
-# The actual brain inside the core
-- type: entity
-  id: StationAiBrain
-  parent: PositronicBrain
-  categories: [ HideSpawnMenu, DoNotMap ]
-  components:
-  - type: Sprite
-    # Once it's in a core it's pretty much an abstract entity at that point.
-    visible: false
-  - type: SiliconLawProvider
-    laws: NTDefault # Corvax-NTDefault
-  - type: SiliconLawBound
-  - type: ActionGrant
-    actions:
-    - ActionViewLaws
-  - type: UserInterface
-    interfaces:
-      enum.SiliconLawsUiKey.Key:
-        type: SiliconLawBoundUserInterface
-        requireInputValidation: false
-  - type: ComplexInteraction
-  - type: Actions
-  - type: Access
-    groups:
-    - AllAccess
-    - Silicon
-  - type: Eye
-    drawFov: false
-  - type: Examiner
-  - type: InputMover
-  - type: BlockMovement
-    blockInteraction: false
-  - type: GhostOnMove
-    mustBeDead: true
-  - type: Speech
-    speechVerb: Robotic
-    speechSounds: Borg
-  - type: Tag
-    tags:
-    - HideContextMenu
-    - StationAi
-    - NoConsoleSound
-  - type: StartingMindRole
-    mindRole: "MindRoleSiliconBrain"
-    silent: true
-  - type: StationAiCustomization
-    protoIds:
-      StationAiCoreIconography: StationAiIconAi
-      StationAiHolograms: StationAiHologramFemale
-  - type: HolographicAvatar
-    layerData:
-    - sprite: Mobs/Silicon/holograms.rsi
-      state: ai_female
-  - type: NameIdentifier
-    group: StationAi
-  - type: ToggleableGhostRole
-    roleName: station-ai-ghost-role-name
-    roleDescription: station-ai-ghost-role-description
-    roleRules: ghost-role-information-silicon-rules
-    mindRoles:
-    - MindRoleGhostRoleSilicon
-    job: StationAi
 
 # Hologram projection that the AI's eye tracks.
 - type: entity
@@ -563,20 +490,6 @@
         startingItem: PowerCellHyper
 
 - type: entity
-  id: PlayerBorgSyndicateAssaultGhostRole
-  parent: PlayerBorgSyndicateAssaultBattery
-  suffix: Ghost role
-  components:
-    - type: GhostRole
-      name: ghost-role-information-syndicate-cyborg-assault-name
-      description: ghost-role-information-syndicate-cyborg-description
-      rules: ghost-role-information-silicon-rules
-      raffle:
-        settings: default
-      job: Borg
-    - type: GhostTakeoverAvailable
-
-- type: entity
   id: PlayerBorgSyndicateSaboteurBattery
   parent: BorgChassisSyndicateSaboteur
   suffix: Battery, Module, Operative
@@ -595,20 +508,6 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellHyper
-
-- type: entity
-  id: PlayerBorgSyndicateSaboteurGhostRole
-  parent: PlayerBorgSyndicateSaboteurBattery
-  suffix: Ghost role
-  components:
-    - type: GhostRole
-      name: ghost-role-information-syndicate-cyborg-saboteur-name
-      description: ghost-role-information-syndicate-cyborg-description
-      rules: ghost-role-information-silicon-rules
-      raffle:
-        settings: default
-      job: Borg
-    - type: GhostTakeoverAvailable
 
 - type: entity
   parent: MarkerBase
@@ -651,21 +550,6 @@
     nameSegments: [NamesBorg]
 
 - type: entity
-  parent: PlayerEngineeringBorgDerelict
-  id: PlayerEngineeringBorgDerelictGhostRole
-  suffix: Ghost role
-  components:
-  - type: GhostRole
-    name: ghost-role-information-derelict-engineering-cyborg-name
-    description: ghost-role-information-derelict-engineering-cyborg-description
-    rules: ghost-role-information-silicon-rules
-    raffle:
-      settings: default
-    reregister: false
-    job: Borg
-  - type: GhostTakeoverAvailable
-
-- type: entity
   parent: BorgChassisDerelict
   id: PlayerBorgDerelict
   suffix: Battery, Module
@@ -684,21 +568,6 @@
         startingItem: PowerCellHigh
   - type: RandomMetadata
     nameSegments: [NamesBorg]
-
-- type: entity
-  parent: PlayerBorgDerelict
-  id: PlayerBorgDerelictGhostRole
-  suffix: Ghost role
-  components:
-    - type: GhostRole
-      name: ghost-role-information-derelict-cyborg-name
-      description: ghost-role-information-derelict-cyborg-description
-      rules: ghost-role-information-silicon-rules
-      raffle:
-        settings: default
-      reregister: false
-      job: Borg
-    - type: GhostTakeoverAvailable
 
 - type: entity
   parent: JanitorBorgChassisDerelict
@@ -721,21 +590,6 @@
         startingItem: PowerCellHigh
   - type: RandomMetadata
     nameSegments: [NamesBorg]
-
-- type: entity
-  parent: PlayerJanitorBorgDerelict
-  id: PlayerJanitorBorgDerelictGhostRole
-  suffix: Ghost role
-  components:
-  - type: GhostRole
-    name: ghost-role-information-derelict-janitor-cyborg-name
-    description: ghost-role-information-derelict-janitor-cyborg-description
-    rules: ghost-role-information-silicon-rules
-    raffle:
-      settings: default
-    reregister: false
-    job: Borg
-  - type: GhostTakeoverAvailable
 
 - type: entity
   parent: MedicalBorgChassisDerelict
@@ -761,21 +615,6 @@
     nameSegments: [NamesBorg]
 
 - type: entity
-  parent: PlayerMedicalBorgDerelict
-  id: PlayerMedicalBorgDerelictGhostRole
-  suffix: Ghost role
-  components:
-  - type: GhostRole
-    name: ghost-role-information-derelict-medical-cyborg-name
-    description: ghost-role-information-derelict-medical-cyborg-description
-    rules: ghost-role-information-silicon-rules
-    raffle:
-      settings: default
-    reregister: false
-    job: Borg
-  - type: GhostTakeoverAvailable
-
-- type: entity
   parent: MiningBorgChassisDerelict
   id: PlayerMiningBorgDerelict
   suffix: Battery, Module
@@ -798,21 +637,6 @@
     nameSegments: [NamesBorg]
 
 - type: entity
-  parent: PlayerMiningBorgDerelict
-  id: PlayerMiningBorgDerelictGhostRole
-  suffix: Ghost role
-  components:
-  - type: GhostRole
-    name: ghost-role-information-derelict-mining-cyborg-name
-    description: ghost-role-information-derelict-mining-cyborg-description
-    rules: ghost-role-information-silicon-rules
-    raffle:
-      settings: default
-    reregister: false
-    job: Borg
-  - type: GhostTakeoverAvailable
-
-- type: entity
   parent: SyndicateAssaultBorgChassisDerelict
   id: PlayerSyndicateAssaultBorgDerelict
   suffix: Battery, Module
@@ -832,18 +656,3 @@
         startingItem: PowerCellHyper
   - type: RandomMetadata
     nameSegments: [NamesDeathCommando]
-
-- type: entity
-  parent: PlayerSyndicateAssaultBorgDerelict
-  id: PlayerBorgSyndicateDerelictGhostRole
-  suffix: Ghost role
-  components:
-  - type: GhostRole
-    name: ghost-role-information-derelict-syndicate-assault-cyborg-name
-    description: ghost-role-information-derelict-syndicate-assault-cyborg-description
-    rules: ghost-role-information-silicon-rules
-    raffle:
-      settings: default
-    reregister: false
-    job: Borg
-  - type: GhostTakeoverAvailable

@@ -315,7 +315,7 @@
     # sorry ce but your jordans are not as high security as the caps gear
     difficulty: 3.5
   - type: NotJobRequirement
-    jobs: [ Captain ]
+    jobs: [ RogueTrader ]
 
 - type: entity
   parent: BaseCaptainObjective

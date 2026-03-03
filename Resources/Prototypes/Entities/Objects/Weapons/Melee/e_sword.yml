@@ -195,8 +195,6 @@
       malus: 0.4
     - type: Execution
       doAfterDuration: 4.0
-    - type: Contraband
-      severity: Syndicate
   - type: Sprite
     sprite: Objects/Weapons/Melee/e_dagger.rsi
     layers:

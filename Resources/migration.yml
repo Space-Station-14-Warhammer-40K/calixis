@@ -665,7 +665,7 @@ WeaponEnergyTurretStationControlPanel: WeaponEnergyTurretSecurityControlPanel
 WeaponEnergyTurretStationMachineCircuitboard: WeaponEnergyTurretSecurityMachineCircuitboard
 
 # 2025-05-27
-PlayerStationAiPilgrim: PlayerStationAi
+#PlayerStationAiPilgrim: PlayerStationAi
 
 # 2025-05-30
 SpawnHonkBot: SpawnMobHonkBot
